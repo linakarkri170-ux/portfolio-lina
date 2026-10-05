@@ -1,7 +1,6 @@
 <?php
 // 1. Ila kan l-appel kayji men API (Fetch/Axios awla query parameter ?api=1)
-if (isset($_GET['api']) \vert{}\vert{} strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false) {
-    header("Access-Control-Allow-Origin: *");
+if (isset($_GET['api']) || strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false)    header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
