@@ -873,59 +873,13 @@
      PARCOURS
 ===================================================== -->
 
-<section class="section" id="parcours">
 
-    <div class="section-title">
-
-        <div class="section-label">
-            Mon parcours
-        </div>
-
-        <h2>
-            Mon expérience digitale
-        </h2>
-
-        <p>
-            Une collection de travaux pratiques, projets web
-            et apprentissages réalisés pendant ma formation.
-        </p>
-
-    </div>
-
-
-    <div class="grid">
-
-
-        <!-- Premier site -->
-
-        <div class="card">
-
-            <div class="card-icon">
-                <i class="fas fa-desktop"></i>
-            </div>
-
-            <h3>
-                Premier site
-            </h3>
-
-            <p>
-                Premier site du groupe
-                <strong>Dev 104</strong>
-                déployé sur
-                <strong>Vercel</strong>.
-            </p>
-
-        </div>
 
 
         <!-- Cours PHP -->
 
       
 
-
-    </div>
-
-</section>
 
 
 <!-- =====================================================
@@ -1087,130 +1041,7 @@
 
 
 
-        <!-- Triangle formulaire -->
 
-        <div class="card">
-
-            <div class="card-icon">
-                <i class="fas fa-caret-up"></i>
-            </div>
-
-            <h3>
-                Triangle via formulaire
-            </h3>
-
-            <form method="POST" action="index.php">
-
-                <div class="form-group">
-
-                    <label>
-                        Nombre de lignes
-                    </label>
-
-                    <input
-                        type="text"
-                        name="rowst"
-                        class="input"
-                    >
-
-                </div>
-
-
-                <div class="form-actions">
-
-                    <input
-                        type="submit"
-                        name="action3"
-                        value="Dessiner"
-                        class="btn"
-                    >
-
-                    <input
-                        type="reset"
-                        value="Réinitialiser"
-                        class="btn btn-outline"
-                    >
-
-                </div>
-
-            </form>
-
-
-            <?php
-
-            if (!empty($_POST['action3'])) {
-
-                if (function_exists('Triangle')) {
-
-                    Triangle($_POST['rowst']);
-
-                }
-
-            }
-
-            ?>
-
-        </div>
-
-
-        <!-- Triangle liens -->
-
-        <div class="card">
-
-            <div class="card-icon">
-                <i class="fas fa-link"></i>
-            </div>
-
-            <h3>
-                Triangle via liens
-            </h3>
-
-            <p>
-                Sélectionnez le nombre de lignes :
-            </p>
-
-            <div class="links">
-
-                <?php
-
-                for ($i = 3; $i <= 10; $i++) {
-
-                    echo "
-                        <a
-                            href='index.php?action4=$i'
-                            class='link'
-                        >
-                            $i
-                        </a>
-                    ";
-
-                }
-
-                ?>
-
-            </div>
-
-
-            <?php
-
-            if (!empty($_GET['action4'])) {
-
-                if (function_exists('Triangle')) {
-
-                    Triangle($_GET['action4']);
-
-                }
-
-            }
-
-            ?>
-
-        </div>
-
-
-    </div>
-
-</section>
 
 
 <!-- =====================================================
