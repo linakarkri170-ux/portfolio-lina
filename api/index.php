@@ -1,327 +1,832 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOWFS204</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <title>Lina Karkri | Portfolio Développement Digital</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
+
+        /* =====================================================
+           PALETTE
+        ===================================================== */
+
         :root {
-            --primary: #c3931b;
-            --primary-rgb: 195, 147, 27;
-            --secondary: #7c5c0d;
-            --bg-dark: #070a13;
-            --card-bg: rgba(20, 27, 45, 0.65);
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glow: rgba(195, 147, 27, 0.25);
+            --bg: #F6F2EC;
+            --card: #E8DED2;
+            --accent: #C98F8A;
+            --accent-dark: #A96F6A;
+            --text: #1E1C19;
+            --muted: #746D67;
+            --hover: #F2DADA;
+            --white: #FFFDF9;
+            --border: rgba(30, 28, 25, 0.10);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(195, 147, 27, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0, 114, 255, 0.05) 0px, transparent 50%);
-            background-attachment: fixed;
         }
 
-        /* HERO SECTION */
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
         .hero {
             position: relative;
-            height: 45vh;
-            background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            min-height: 600px;
+            padding: 70px 30px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 25%,
+                    rgba(201, 143, 138, 0.22),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(232, 222, 210, 0.8),
+                    transparent 35%
+                ),
+                var(--bg);
         }
+
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: var(--hover);
+
+            border-radius: 50%;
+
+            top: -220px;
+            right: -100px;
+
+            opacity: 0.6;
+        }
+
 
         .hero::after {
-            content: '';
+            content: "";
+
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, var(--bg-dark), transparent);
-            z-index: 2;
+
+            width: 350px;
+            height: 350px;
+
+            background: var(--card);
+
+            border-radius: 50%;
+
+            bottom: -200px;
+            left: -130px;
+
+            opacity: 0.55;
         }
 
-        .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(7, 10, 19, 0.95), rgba(195, 147, 27, 0.25));
-            z-index: 1;
-        }
 
         .hero-content {
             position: relative;
-            text-align: center;
-            z-index: 3;
-            padding: 0 20px;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 70px;
         }
+
+
+        /* =====================================================
+           PROFILE PHOTO
+        ===================================================== */
+
+        .profile-container {
+            position: relative;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-container::before {
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+            height: 330px;
+
+            border-radius: 50%;
+
+            background: var(--hover);
+
+            top: 18px;
+            left: 18px;
+
+            z-index: -1;
+        }
+
+
+        .profile-photo {
+            width: 330px;
+            height: 330px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 8px solid var(--white);
+
+            box-shadow:
+                0 20px 50px rgba(30, 28, 25, 0.15),
+                0 0 0 10px rgba(201, 143, 138, 0.12);
+
+            transition: 0.4s ease;
+        }
+
+
+        .profile-photo:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 25px 60px rgba(30, 28, 25, 0.18),
+                0 0 0 14px rgba(201, 143, 138, 0.15);
+        }
+
+
+        /* =====================================================
+           HERO TEXT
+        ===================================================== */
+
+        .hero-text {
+            flex: 1;
+            max-width: 620px;
+        }
+
+
+        .small-title {
+            color: var(--accent-dark);
+
+            font-size: 0.78rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+        }
+
 
         .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 3.2rem);
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(to right, #ffffff, #d0a42b, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(2.8rem, 5vw, 5rem);
+
+            line-height: 1.05;
+
+            font-weight: 500;
+
+            color: var(--text);
+
+            letter-spacing: -2px;
         }
 
-        .hero p {
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+
+        .hero-description {
+            margin-top: 25px;
+
+            color: var(--muted);
+
             font-size: 1rem;
-            color: var(--primary);
-            letter-spacing: 4px;
-            margin-top: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
+
+            max-width: 540px;
         }
 
-        /* LAYOUT & CARDS GRID */
+
+        .hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 12px 22px;
+
+            border-radius: 30px;
+
+            background: var(--accent);
+
+            color: white;
+
+            border: 1px solid var(--accent);
+
+            text-decoration: none;
+
+            font-size: 0.84rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .btn:hover {
+            background: var(--accent-dark);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 22px rgba(201, 143, 138, 0.25);
+        }
+
+
+        .btn-secondary {
+            background: transparent;
+
+            color: var(--accent-dark);
+
+            border: 1px solid var(--accent);
+        }
+
+
+        .btn-secondary:hover {
+            background: var(--hover);
+
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
         .container {
             max-width: 1200px;
-            margin: -50px auto 80px;
-            padding: 0 25px;
-            position: relative;
-            z-index: 10;
+
+            margin: 0 auto;
+
+            padding: 55px 25px 90px;
         }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section-header {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+
+            font-size: 2rem;
+
+            font-weight: 500;
+
+            color: var(--text);
+
+            justify-content: center;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-header p {
+            color: var(--muted);
+
+            font-size: 0.9rem;
+        }
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
 
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 25px;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(340px, 1fr));
+
+            gap: 22px;
         }
 
-        /* NEW STYLE WA3ER FOR CARDS */
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
         .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 28px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 
-                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
             position: relative;
+
+            background: rgba(232, 222, 210, 0.70);
+
+            padding: 28px;
+
+            border-radius: 18px;
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 8px 25px rgba(30, 28, 25, 0.05);
+
+            transition: 0.35s ease;
+
             overflow: hidden;
         }
 
+
         .card::before {
-            content: '';
+            content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-            transition: 0.5s;
-            transform: translateX(-100%);
+
+            background: var(--accent);
+
+            opacity: 0;
+
+            transition: 0.3s;
         }
 
-        .card:hover::before {
-            transform: translateX(100%);
-        }
 
         .card:hover {
             transform: translateY(-6px);
-            background: rgba(25, 34, 56, 0.8);
-            border-color: rgba(var(--primary-rgb), 0.4);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
-                        0 0 20px rgba(var(--primary-rgb), 0.15);
+
+            background: var(--white);
+
+            border-color: rgba(201, 143, 138, 0.35);
+
+            box-shadow:
+                0 15px 35px rgba(30, 28, 25, 0.10);
         }
+
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
 
         .card-full {
             grid-column: 1 / -1;
         }
 
-        h2 {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-top: 0;
+
+        /* =====================================================
+           CARD TITLES
+        ===================================================== */
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+
+            font-size: 1.3rem;
+
+            font-weight: 500;
+
+            color: var(--text);
+
             margin-bottom: 20px;
-            font-weight: 600;
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
-            letter-spacing: -0.3px;
         }
 
-        h2 i {
-            color: var(--primary);
-            background: rgba(var(--primary-rgb), 0.1);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 1.1rem;
+
+        .card h2 i {
+            color: var(--accent);
+
+            background: rgba(201, 143, 138, 0.15);
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 0.95rem;
         }
 
-        /* FORMS & INPUTS */
+
+        /* =====================================================
+           FORMS
+        ===================================================== */
+
         .form {
             width: 100%;
         }
 
+
         .form-group {
             display: flex;
+
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 18px;
+
+            gap: 7px;
+
+            margin-bottom: 17px;
         }
 
+
         label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            font-size: 0.72rem;
+
+            color: var(--muted);
+
+            font-weight: 600;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
         }
 
+
         .input {
             width: 100%;
-            box-sizing: border-box;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #1f2a45;
-            background: #0f1524;
-            color: white;
+
+            padding: 13px 16px;
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(30, 28, 25, 0.12);
+
+            background: var(--white);
+
+            color: var(--text);
+
             font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+
+            font-size: 0.9rem;
+
+            transition: 0.3s;
         }
+
 
         .input:focus {
             outline: none;
-            border-color: var(--primary);
-            background: #141c30;
-            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15), 
-                        inset 0 2px 4px rgba(0,0,0,0.2);
+
+            border-color: var(--accent);
+
+            box-shadow:
+                0 0 0 4px rgba(201, 143, 138, 0.12);
         }
 
-        /* BUTTONS (More Tech/Chic Look) */
+
         .form-actions {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-        }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
-            padding: 11px 20px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.88rem;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
-            flex: 1;
-            min-width: 120px;
+
+            margin-top: 18px;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.35);
-            filter: brightness(1.1);
-        }
 
-        .btn-secondary {
-            background: #1e2640;
-            color: #e2e8f0;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: none;
-        }
+        /* =====================================================
+           LINKS / PAGINATION
+        ===================================================== */
 
-        .btn-secondary:hover {
-            background: #293456;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        /* LINK LISTS (Premium Pagination Styles) */
         .links {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
+
             margin-top: 15px;
-            align-items: center;
         }
+
 
         .link {
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
-            background: #0f1524;
-            color: #ffe396;
-            border-radius: 8px;
+
+            background: var(--white);
+
+            color: var(--accent-dark);
+
+            border-radius: 50%;
+
             font-weight: 600;
-            font-size: 0.9rem;
+
+            font-size: 0.85rem;
+
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.2s ease;
+
+            border: 1px solid rgba(201, 143, 138, 0.25);
+
+            transition: 0.25s;
         }
+
 
         .link:hover {
-            background: var(--primary);
-            color: var(--bg-dark);
-            transform: scale(1.1);
-            box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.4);
+            background: var(--accent);
+
+            color: white;
+
+            transform: translateY(-3px);
         }
 
-        /* Custom separator text clean up */
-        .links-wrapper {
-            color: rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-        }
 
-        /* PHP Output container styling */
+        /* =====================================================
+           PHP OUTPUT
+        ===================================================== */
+
         .php-output {
             margin-top: 20px;
-            background: #070a13;
+
+            background: var(--text);
+
+            color: var(--bg);
+
             padding: 18px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.9rem;
+
+            border-radius: 12px;
+
+            border-left: 4px solid var(--accent);
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 0.85rem;
+
             overflow-x: auto;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
         }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            text-align: center;
+
+            padding: 35px 20px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 0.82rem;
+        }
+
+
+        footer strong {
+            color: var(--accent-dark);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .hero {
+                min-height: auto;
+
+                padding: 65px 20px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 40px;
+            }
+
+            .hero-text {
+                max-width: 650px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-photo {
+                width: 270px;
+                height: 270px;
+            }
+
+            .profile-container::before {
+                width: 270px;
+                height: 270px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .profile-photo {
+                width: 220px;
+                height: 220px;
+            }
+
+            .profile-container::before {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+
     </style>
 </head>
+
+
 <body>
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
-    <div class="overlay"></div>
+
     <div class="hero-content">
-        <h1>Welcome  to LINA KARKRI  portefolio / Développement Digital 🚀</h1>
-        <p>Build • Learn • Deploy 🚀</p>
+
+        <div class="profile-container">
+
+            <!--
+                Mets ta photo ici :
+                images/lina.jpg
+            -->
+
+            <img
+                src="images/lina.jpg"
+                alt="Lina Karkri"
+                class="profile-photo"
+            >
+
+        </div>
+
+
+        <div class="hero-text">
+
+            <div class="small-title">
+                Portfolio • Développement Digital
+            </div>
+
+            <h1>
+                Bonjour,<br>
+                je suis <span>Lina</span>
+            </h1>
+
+            <p class="hero-description">
+                Étudiante en Développement Digital, passionnée par
+                le développement web, le design et la création digitale.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#portfolio" class="btn">
+                    <i class="fas fa-arrow-down"></i>
+                    Découvrir mon portfolio
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contactez-moi
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
 
-<div class="container">
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container" id="portfolio">
+
+
+    <div class="section-header">
+
+        <h2>
+            Mon Portfolio
+        </h2>
+
+        <p>
+            Mes cours, ateliers, projets et réalisations
+        </p>
+
+    </div>
+
+
     <div class="grid-layout">
+
+
 <?php
 
 include_once 'Traitements.php';
@@ -329,292 +834,943 @@ include_once 'Traitements.php';
 $groupe = "Dev 104";
 $plt = "Vercel";
 
+
+/* =====================================================
+   PREMIER SITE
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-desktop'></i> Premier site de $groupe sur $plt</h2>";
+
+echo "
+<h2>
+    <i class='fas fa-desktop'></i>
+    Premier site de $groupe sur $plt
+</h2>
+";
+
+echo "
+<p style='color:var(--muted);'>
+    Mon premier site réalisé dans le cadre de ma formation
+    en Développement Digital.
+</p>
+";
+
 echo "</div>";
 
 
-// Cours PHP
+
+/* =====================================================
+   COURS PHP
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-book'></i> Cours PHP</h2>";
-echo "<a href='/php.pptx' class='btn'><i class='fas fa-download'></i> Telecharger Le cours</a>";
+
+echo "
+<h2>
+    <i class='fas fa-book'></i>
+    Cours PHP
+</h2>
+";
+
+echo "
+<a href='/php.pptx' class='btn'>
+    <i class='fas fa-download'></i>
+    Télécharger le cours
+</a>
+";
+
 echo "</div>";
 
-// Communication
+
+
+/* =====================================================
+   COMMUNICATION
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-paper-plane'></i> Communication via formulaire :</h2>";
+
+echo "
+<h2>
+    <i class='fas fa-paper-plane'></i>
+    Communication via formulaire
+</h2>
+";
+
 ?>
+
 <form method="POST" action="login.php" class="form">
-    
-    <div class="form-group">
-        <label>Login:</label>
-        <input type="text" name="log" class="input" />
-    </div>
 
     <div class="form-group">
-        <label>Password:</label>
-        <input type="password" name="pass" class="input" />
+
+        <label>Login</label>
+
+        <input
+            type="text"
+            name="log"
+            class="input"
+        >
+
     </div>
+
+
+    <div class="form-group">
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="pass"
+            class="input"
+        >
+
+    </div>
+
 
     <div class="form-actions">
-        <input type="submit" name="action1" value="connexion" class="btn" />
-        <input type="reset" value="Réinitialiser" class="btn btn-secondary" />
+
+        <input
+            type="submit"
+            name="action1"
+            value="Connexion"
+            class="btn"
+        >
+
+        <input
+            type="reset"
+            value="Réinitialiser"
+            class="btn btn-secondary"
+        >
+
     </div>
 
 </form>
+
 <?php
+
 echo "</div>";
 
 
-// Table
+
+/* =====================================================
+   TABLE
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-table'></i> Appel Table</h2>";
+
+echo "
+<h2>
+    <i class='fas fa-table'></i>
+    Appel Table
+</h2>
+";
+
 ?>
+
 <form method="POST" action="index.php" class="form">
 
     <div class="form-group">
-        <label>nbre de lignes :</label>
-        <input type="text" name="rows" class="input" />
+
+        <label>Nombre de lignes</label>
+
+        <input
+            type="text"
+            name="rows"
+            class="input"
+        >
+
     </div>
+
 
     <div class="form-group">
-        <label>nbre de colonnes :</label>
-        <input type="text" name="cols" class="input" />
+
+        <label>Nombre de colonnes</label>
+
+        <input
+            type="text"
+            name="cols"
+            class="input"
+        >
+
     </div>
 
+
     <div class="form-actions">
-        <input type="submit" name="action2" value="dessiner" class="btn" />
-        <input type="reset" value="Réinitialiser" class="btn btn-secondary" />
+
+        <input
+            type="submit"
+            name="action2"
+            value="Dessiner"
+            class="btn"
+        >
+
+        <input
+            type="reset"
+            value="Réinitialiser"
+            class="btn btn-secondary"
+        >
+
     </div>
 
 </form>
+
 <?php
-if(!empty($_POST['action2'])){
-    table($_POST['rows'], $_POST['cols']);
+
+if (!empty($_POST['action2'])) {
+
+    table(
+        $_POST['rows'],
+        $_POST['cols']
+    );
+
 }
+
 echo "</div>";
 
 
-// Triangle form
+
+/* =====================================================
+   TRIANGLE FORM
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-caret-up'></i> Appel Triangle via form</h2>";
+
+echo "
+<h2>
+    <i class='fas fa-caret-up'></i>
+    Appel Triangle via formulaire
+</h2>
+";
+
 ?>
+
 <form method="POST" action="index.php" class="form">
 
     <div class="form-group">
-        <label>nbre de lignes :</label>
-        <input type="text" name="rowst" class="input" />
+
+        <label>Nombre de lignes</label>
+
+        <input
+            type="text"
+            name="rowst"
+            class="input"
+        >
+
     </div>
 
+
     <div class="form-actions">
-        <input type="submit" name="action3" value="dessiner" class="btn" />
-        <input type="reset" value="Réinitialiser" class="btn btn-secondary" />
+
+        <input
+            type="submit"
+            name="action3"
+            value="Dessiner"
+            class="btn"
+        >
+
+        <input
+            type="reset"
+            value="Réinitialiser"
+            class="btn btn-secondary"
+        >
+
     </div>
 
 </form>
+
 <?php
-if(!empty($_POST['action3'])){
+
+if (!empty($_POST['action3'])) {
+
     Triangle($_POST['rowst']);
+
 }
+
 echo "</div>";
 
 
-// Triangle liens
+
+/* =====================================================
+   TRIANGLE LINKS
+===================================================== */
+
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-link'></i> Appel Triangle via liens hypertext</h2>";
+
+echo "
+<h2>
+    <i class='fas fa-link'></i>
+    Appel Triangle via liens hypertextes
+</h2>
+";
+
 
 echo "<div class='links'>";
-for($i=3;$i<=10;$i++){
-    echo "<a href='index.php?action4=$i' class='link'>$i</a>";
+
+for ($i = 3; $i <= 10; $i++) {
+
+    echo "
+    <a
+        href='index.php?action4=$i'
+        class='link'
+    >
+        $i
+    </a>
+    ";
+
 }
+
 echo "</div>";
 
-if(!empty($_GET['action4'])){
+
+if (!empty($_GET['action4'])) {
+
     Triangle($_GET['action4']);
+
 }
 
 echo "</div>";
 
 
-// Atelier 1
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-laptop-code'></i> Atelier 1</h2>";
-echo "<a href='/At1.pdf' class='btn'><i class='far fa-file-pdf'></i> Voir PDF</a>";
-echo "</div>";
 
-
-// Atelier 2
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-user-plus'></i> Atelier 2-  Gestion d’un formulaire d’inscription </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At2.pdf' class='btn btn-secondary'><i class='far fa-file-pdf'></i> Voir PDF</a>";
-echo "<a href='inscription.php' class='btn'><i class='fas fa-pen-alt'></i> Inscription en ligne</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 3
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-cloud-upload-alt'></i> Atelier 3- Upload de fichiers en PHP</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At3_enn.pdf' class='btn btn-secondary'>Ennoncé Atelier 3</a>";
-echo "<a href='/At3.pdf' class='btn btn-secondary'>Voir Rapport Atelier 3</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier3_dev101.git' class='btn'> <i class='fab fa-github'></i> GitHub Repo</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-
-// Atelier 4
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-graduation-cap'></i> Atelier 4- Gestion des étudiants(Fichier texte + Upload photo +Recherche)</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At4.pdf' class='btn btn-secondary'>Ennoncé Atelier 4</a>";
-echo "<a href='/Rapp4.pdf' class='btn btn-secondary'>Voir Rapport Atelier 4</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier4_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-
-
-// Atelier 5
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-cookie-bite'></i> Atelier 5- Gestion des sessions, cookies</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At5.pdf' class='btn btn-secondary'>Ennoncé Atelier 5</a>";
-echo "<a href='/Rapp5.pdf' class='btn btn-secondary'>Voir Rapport Atelier 5</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier5_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-
-// Atelier 6
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-cube'></i> Atelier 6- la POO en PHP</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At6.pdf' class='btn btn-secondary'>Ennoncé Atelier 6</a>";
-echo "<a href='#' class='btn btn-secondary'>Voir Rapport Atelier 6</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier6_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 7
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-cubes'></i> Atelier 7- POO en PHP avec Sessions</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At7.pdf' class='btn btn-secondary'>Ennoncé Atelier 7</a>";
-echo "<a href='/Rapp7.pdf' class='btn btn-secondary'>Voir Rapport Atelier 7</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier7_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 8
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-shopping-basket'></i> Atelier 8- Application E-Fruits controle continu</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At8.pdf' class='btn btn-secondary'>Ennoncé Atelier 8</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier8_dev101.git' class='btn btn-secondary'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "<a href='https://efruits.vercel.app/acc.php' class='btn'><i class='fas fa-store'></i> Mystore Efruit</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/fruits.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Vercel</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-
-// Atelier 9
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-database'></i> Atelier 9- Mysql PDO : application gestion des etudiants</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/ApplicationBDD.pptx' class='btn btn-secondary'>Ennoncé Atelier 9</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier9_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 10
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-list-ol'></i> Atelier 10-La Pagination en PHP</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At10.pdf' class='btn btn-secondary'>Ennoncé Atelier 10</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier10_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-
-
-// Atelier 11
-echo "<div class='card'>";
-echo "<h2><i class='js-square fab fa-js'></i> Atelier 11 Ajax Reponse HTML</h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At11.pdf' class='btn btn-secondary'>Ennoncé Atelier 11 </a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier11_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 12
-echo "<div class='card'>";
-echo "<h2><i class='code fas fa-code'></i> Atelier 12 Ajax Reponse Json </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At12.pdf' class='btn btn-secondary'>Ennoncé Atelier 12</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier12_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-
-// Atelier 13
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-server'></i> Atelier 13 services web </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At13.pdf' class='btn btn-secondary'>Ennoncé Atelier 13</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/atelier13_dev101.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-// Atelier 14
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-hamburger'></i> Atelier 14- Burger_Code - </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/burger_code.pptx' class='btn btn-secondary'>Ennoncé Atelier 14</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/burgercode.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
-
-
-
-// Atelier 15
-echo "<div class='card'>";
-echo "<h2><i class='fas fa-sitemap'></i> Atelier 15 Architecture MVC </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At15.pdf' class='btn btn-secondary'>Ennoncé Atelier 15</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/MVC.git' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
-echo "</div>";
+/* =====================================================
+   ATELIER 1
+===================================================== */
 
 echo "<div class='card'>";
-echo "<h2><i class='fas fa-store-alt'></i> My store </h2>";
-echo "<div style='display:flex; flex-direction:column; gap:10px;'>";
-echo "<a href='/At15.pdf' class='btn btn-secondary'>Ennoncé My_store</a>";
-echo "<a href='https://github.com/fatimazahraelbakkali78-blip/My_store' class='btn'><i class='fab fa-github'></i> GitHub Repo Local</a>";
-echo "</div>";
+
+echo "
+<h2>
+    <i class='fas fa-laptop-code'></i>
+    Atelier 1
+</h2>
+";
+
+echo "
+<a href='/At1.pdf' class='btn'>
+    <i class='far fa-file-pdf'></i>
+    Voir PDF
+</a>
+";
+
 echo "</div>";
 
 
+
+/* =====================================================
+   ATELIER 2
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-user-plus'></i>
+    Atelier 2 - Gestion d'un formulaire d'inscription
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At2.pdf' class='btn btn-secondary'>
+        <i class='far fa-file-pdf'></i>
+        Voir PDF
+    </a>
+
+    <a href='inscription.php' class='btn'>
+        <i class='fas fa-pen-alt'></i>
+        Inscription en ligne
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 3
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-cloud-upload-alt'></i>
+    Atelier 3 - Upload de fichiers en PHP
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At3_enn.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 3
+    </a>
+
+    <a href='/At3.pdf' class='btn btn-secondary'>
+        Voir Rapport Atelier 3
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier3_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 4
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-graduation-cap'></i>
+    Atelier 4 - Gestion des étudiants
+</h2>
+";
+
+echo "
+<p style='color:var(--muted); margin-bottom:15px;'>
+    Fichier texte + Upload photo + Recherche
+</p>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At4.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 4
+    </a>
+
+    <a href='/Rapp4.pdf' class='btn btn-secondary'>
+        Voir Rapport Atelier 4
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier4_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 5
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-cookie-bite'></i>
+    Atelier 5 - Sessions & Cookies
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At5.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 5
+    </a>
+
+    <a href='/Rapp5.pdf' class='btn btn-secondary'>
+        Voir Rapport Atelier 5
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier5_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 6
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-cube'></i>
+    Atelier 6 - La POO en PHP
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At6.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 6
+    </a>
+
+    <a href='#' class='btn btn-secondary'>
+        Voir Rapport Atelier 6
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier6_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 7
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-cubes'></i>
+    Atelier 7 - POO en PHP avec Sessions
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At7.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 7
+    </a>
+
+    <a href='/Rapp7.pdf' class='btn btn-secondary'>
+        Voir Rapport Atelier 7
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier7_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 8
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-shopping-basket'></i>
+    Atelier 8 - Application E-Fruits
+</h2>
+";
+
+echo "
+<p style='color:var(--muted); margin-bottom:15px;'>
+    Contrôle continu
+</p>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At8.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 8
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier8_dev101.git'
+        class='btn btn-secondary'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+    <a
+        href='https://efruits.vercel.app/acc.php'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fas fa-store'></i>
+        My Store E-Fruit
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/fruits.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Vercel
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 9
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-database'></i>
+    Atelier 9 - MySQL PDO
+</h2>
+";
+
+echo "
+<p style='color:var(--muted); margin-bottom:15px;'>
+    Application de gestion des étudiants
+</p>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/ApplicationBDD.pptx' class='btn btn-secondary'>
+        Énoncé Atelier 9
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier9_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 10
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-list-ol'></i>
+    Atelier 10 - Pagination en PHP
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At10.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 10
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier10_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 11
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fab fa-js'></i>
+    Atelier 11 - Ajax Réponse HTML
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At11.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 11
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier11_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 12
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-code'></i>
+    Atelier 12 - Ajax Réponse JSON
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At12.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 12
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier12_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 13
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-server'></i>
+    Atelier 13 - Services Web
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At13.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 13
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/atelier13_dev101.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 14
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-hamburger'></i>
+    Atelier 14 - Burger Code
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/burger_code.pptx' class='btn btn-secondary'>
+        Énoncé Atelier 14
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/burgercode.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   ATELIER 15
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-sitemap'></i>
+    Atelier 15 - Architecture MVC
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At15.pdf' class='btn btn-secondary'>
+        Énoncé Atelier 15
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/MVC.git'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
+
+
+
+/* =====================================================
+   MY STORE
+===================================================== */
+
+echo "<div class='card'>";
+
+echo "
+<h2>
+    <i class='fas fa-store-alt'></i>
+    My Store
+</h2>
+";
+
+echo "
+<div style='display:flex; flex-direction:column; gap:10px;'>
+
+    <a href='/At15.pdf' class='btn btn-secondary'>
+        Énoncé My Store
+    </a>
+
+    <a
+        href='https://github.com/fatimazahraelbakkali78-blip/My_store'
+        class='btn'
+        target='_blank'
+    >
+        <i class='fab fa-github'></i>
+        GitHub Repo Local
+    </a>
+
+</div>
+";
+
+echo "</div>";
 
 ?>
 
     </div>
+
 </div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="contact">
+
+    <p>
+        © 2026 <strong>Lina Karkri</strong>
+        — Portfolio Développement Digital
+    </p>
+
+    <p style="margin-top:8px;">
+        Build • Learn • Create • Deploy
+    </p>
+
+</footer>
+
 
 </body>
 </html>
