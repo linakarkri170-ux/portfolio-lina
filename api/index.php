@@ -255,7 +255,7 @@ if (isset($_GET['api']) || strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/js
     <!-- Script JS باش يجيب الـ Data من l-PHP backend w يخدم الـ 3D -->
     <script>
         // 1. Fetch data men l-API dyal PHP f nafs l-fichier
-        fetch('?api=1')
+        fetch('/api/portfolio.php')
             .then(res => res.json())
             .then(data => {
                 // Populate Profile
